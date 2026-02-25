@@ -1,22 +1,27 @@
-import java.util.Scanner; // Import the Scanner class to read input
+import java.util.Scanner;
 
-public class HelloWorld {
+public class NameGreeter {
     public static void main(String[] args) {
-        // Create a Scanner object to read from the console
-        Scanner myObj = new Scanner(System.in);
-        
-        System.out.println("Enter your name:");
+        Scanner input = new Scanner(System.in);
+        String name = "";
 
-        // Read user input
-        String userName = myObj.nextLine();
+        System.out.println("--- Welcome to the Infinite Greeter ---");
+        System.out.println("(Type 'exit' to stop the program)");
 
-        // Check if the name is empty and respond accordingly
-        if (userName.trim().isEmpty()) {
-            System.out.println("Hello, Stranger!");
-        } else {
-            System.out.println("Hello, " + userName + "! Welcome to Java.");
+        // This loop runs as long as the user doesn't type "exit"
+        while (!name.equalsIgnoreCase("exit")) {
+            System.out.print("\nPlease enter a name: ");
+            name = input.nextLine();
+
+            if (name.equalsIgnoreCase("exit")) {
+                System.out.println("Goodbye! Closing program...");
+            } else if (name.trim().isEmpty()) {
+                System.out.println("You didn't type anything! Try again.");
+            } else {
+                System.out.println("Hello, " + name + "! Hope you're having a great day.");
+            }
         }
-        
-        myObj.close(); // Good practice to close the scanner
+
+        input.close();
     }
 }
